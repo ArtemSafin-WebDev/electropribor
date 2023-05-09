@@ -133,7 +133,7 @@ main {
 
 .page-header__row {
   display: flex;
-  height: 20rem;
+  height: 17rem;
 }
 
 .page-header__logo {
@@ -182,6 +182,10 @@ main {
   flex-grow: 1;
   text-align: center;
   padding-left: 4rem;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 3.7rem;
+  line-height: 4.5rem;
 }
 .page-header__title::before {
   content: "";
@@ -222,7 +226,7 @@ main {
   align-items: center;
   flex-wrap: wrap;
   gap: 8rem;
-  row-gap: 1rem;
+  row-gap: 0.5rem;
   padding-right: 7rem;
   padding-left: 10rem;
   padding-top: 1rem;
@@ -252,6 +256,10 @@ main {
   font-size: 2rem;
   line-height: 2.4rem;
   color: #f2f8fd;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.9rem;
   text-align: left;
 }
 
@@ -269,6 +277,10 @@ main {
   border-radius: 0.4rem;
   display: block;
   text-align: left;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 1.9rem;
 }
 
 .page-sidebar {
@@ -277,6 +289,7 @@ main {
   display: flex;
   flex-direction: column;
   padding: 3rem;
+  position: relative;
 }
 
 .page-sidebar__toggles {
@@ -745,7 +758,7 @@ main {
   vertical-align: top;
   text-align: left;
   border-top: 1px solid rgba(122, 173, 243, 0.4);
-  padding-right: 3rem;
+  padding-right: 1rem;
 }
 .machine-scheme__table table thead th:nth-child(1) {
   padding-left: 0;
@@ -762,6 +775,12 @@ main {
   width: 1.4rem;
   height: 1.4rem;
 }
+.machine-scheme__table table .text {
+  display: block;
+  width: -moz-max-content;
+  width: max-content;
+  max-width: 20rem;
+}
 .machine-scheme__table table tbody td {
   font-style: normal;
   font-weight: 400;
@@ -773,13 +792,16 @@ main {
   border-bottom: 1px solid rgba(122, 173, 243, 0.4);
   vertical-align: top;
   text-align: left;
-  padding-right: 3rem;
+  padding-right: 1rem;
 }
 .machine-scheme__table table tbody td:nth-child(1) {
   padding-left: 0;
 }
 .machine-scheme__table table tbody td:nth-child(2) {
   border-left: 1px solid rgba(122, 173, 243, 0.4);
+}
+.machine-scheme__table table tbody td a {
+  text-decoration: underline;
 }
 
 .machine-scheme__table-checkboxes {
@@ -801,7 +823,6 @@ main {
 }
 
 .machine-scheme__checkbox-mark {
-  background: #f2f8fd;
   border: 1px solid rgba(122, 173, 243, 0.4);
   border-radius: 0.2rem;
   transition: background-color 0.2s, border-color 0.2s;
@@ -827,33 +848,60 @@ main {
   font-size: 1.6rem;
   line-height: 1.9rem;
   transition: color 0.2s;
-  color: #7aadf3;
+  color: var(--primary-color);
+}
+
+.machine-scheme__checkbox--orange .machine-scheme__checkbox-mark {
+  border-color: #e2aa19;
+}
+
+.machine-scheme__checkbox--orange .machine-scheme__checkbox-text {
+  color: #e2aa19;
+}
+
+.machine-scheme__checkbox--red .machine-scheme__checkbox-mark {
+  border-color: #ff0000;
+}
+
+.machine-scheme__checkbox--red .machine-scheme__checkbox-text {
+  color: #ff0000;
 }
 
 .machine-scheme__checkbox-input:checked ~ .machine-scheme__checkbox-mark {
   background: var(--primary-color);
-  border-color: var(--primary-color);
 }
 .machine-scheme__checkbox-input:checked ~ .machine-scheme__checkbox-mark svg {
   opacity: 1;
 }
 
-.machine-scheme__checkbox-input:checked ~ .machine-scheme__checkbox-text {
-  color: var(--primary-color);
+.machine-scheme__checkbox--orange .machine-scheme__checkbox-input:checked ~ .machine-scheme__checkbox-mark {
+  background-color: #e2aa19;
+}
+
+.machine-scheme__checkbox--red .machine-scheme__checkbox-input:checked ~ .machine-scheme__checkbox-mark {
+  background-color: #ff0000;
+}
+
+.machine__state {
+  margin-top: -4rem;
 }
 
 .machine__state-controls {
   margin-bottom: 5rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 2rem;
+  grid-row-gap: 1rem;
+  grid-column-gap: 5rem;
   align-items: flex-start;
-  gap: 3.5rem;
-  flex-wrap: wrap;
+  align-content: flex-start;
 }
 
 .machine__state-controls-item {
-  display: flex;
-  flex-direction: column;
   gap: 0.8rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
 }
 
 .machine__state-controls-item-title {
@@ -864,10 +912,28 @@ main {
   color: #7aadf3;
 }
 
+.machine__state-controls-item--prognosis {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.machine__state-legend {
+  grid-column: 2/3;
+  grid-row: 2/4;
+}
+
+.machine__state-legend-image {
+  width: 17rem;
+  height: auto;
+  display: block;
+}
+
 .machine__state-controls-select-btn {
   display: flex;
   align-items: center;
-  min-width: 30rem;
   height: 4.1rem;
   padding: 0 1.4rem;
   font-style: normal;
